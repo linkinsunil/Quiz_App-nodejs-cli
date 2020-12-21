@@ -5,11 +5,13 @@ console.log("-----------------------------------------------------")
 var readlineSync = require("readline-sync");
 score = 0;
 
-function quiz(question, answer){
+function quiz(question, answer) {
 
   var userQuestion = readlineSync.question(question);
-  
-  if (userQuestion.toUpperCase === answer.toUpperCase) {
+  // console.log(userQuestion.toUpperCase);
+
+  if (userQuestion.toUpperCase() === answer.toUpperCase()) {
+
     console.log("You're Right");
     score++;
   } else {
@@ -43,7 +45,7 @@ var questions = [{
 }
 ]
 
-for (var i=0; i<questions.length; i++) {
+for (var i = 0; i < questions.length; i++) {
   quiz(questions[i].question, questions[i].answer)
 }
 
@@ -52,8 +54,8 @@ var highScore = [{
   score: 7
 }]
 
-if (score === highScore[0].score){
+if (score === highScore[0].score) {
   console.log("You've topped the score!")
 } else if (score === 5 || 6) {
-  console.log("You're one of top scorers but missed the top spot.")   
+  console.log("You're one of top scorers but missed the top spot.")
 }

@@ -1,63 +1,87 @@
-console.log("Movie Maniac - Season One!");
-console.log("Answer all the questions, lets see how good you know about movies.");
-console.log("-----------------------------------------------------")
+const chalk = require("chalk")
+console.log(chalk.underline.yellowBright("Welcome to the " + chalk.yellow("Season One") + " of " + chalk.bgYellow.black.bold("Movie Maniac!")));
+console.log()
+console.log("Lets see how good you know about " + chalk.bgRed.white.bold("Marvel Cinematic Universe"));
+console.log(chalk.yellow("-----------------------------------------------------"))
 
-var readlineSync = require("readline-sync");
-var score = 0;
+const readlineSync = require("readline-sync");
+let score = 0;
 
   function quiz(question, answer) {
 
-    var userQuestion = readlineSync.question(question);
+    let userQuestion = readlineSync.question(question);
     // console.log(userQuestion.toUpperCase);
 
     if (userQuestion.toUpperCase() === answer.toUpperCase()) {
 
-      console.log("You're Right");
-      score++;
+      console.log(chalk.green("You're Right"));
+      score+=2;
     } else {
-      console.log("You're Wrong!");
+      console.log(chalk.red("You're Wrong!"));
     }
-    console.log("Your score is", score);
-    console.log("------------------------------------");
+    console.log("Your score is", chalk.green(score));
+    console.log(chalk.yellow("------------------------------------"));
   }
 
   var questions = [{
-    question: "Who killed Jessica? ",
-    answer: "No one"
+    question: "1. Superhero Avatar of Clinton Francis `Clint` Barton? ",
+    answer: "Hawkeye"
+  },{
+    question: "2. Brother of THOR? ",
+    answer: "Loki"
   }, {
-    question: "When did Ajav Devgn and his family went for satsang? ",
-    answer: "2 october"
-  }, {
-    question: "Mother of Superman? ",
-    answer: "Martha"
-  }, {
-    question: "Batman's city? ",
-    answer: "Gotham"
-  }, {
-    question: "Which radiation does Hulk is made of? ",
+    question: "3. Which radiation does Hulk is made of? ",
     answer: "Gamma"
   }, {
-    question: "Space deployed assistant of Tony Stark? ",
-    answer: "Veronica"
+    question: "4. Virtual Assistant of Tony Stark? ",
+    answer: "Jarvis"
   }, {
-    question: "Speed of the fastest suit of Iron man? ",
-    answer: "Mark 42"
-  }
-  ]
+    question: "5. Name the planet of THOR? ",
+    answer: "Asgard"
+  }, {
+    question: "6. Most fierce antagonist of MCU? ",
+    answer: "Thanos"
+  }, {
+    question: "7. What killed Tony Stark? ",
+    answer: "Gamma Radiation"
+  }, {
+    question: "8. Dr Banner's superhero avatar was...? ",
+    answer: "Hulk"
+  }, {
+    question: "9. Which superhero was made in lab by Dr Banner and Tony? ",
+    answer: "Vision"
+  }, {
+    question: "10. What the rare metal found in Wakanda simply referred as? ",
+    answer: "Vibranium"
+  }]
 
   for (var i = 0; i < questions.length; i++) {
     quiz(questions[i].question, questions[i].answer)
   }
 
+
+
   var highScore = [{
     name: "Sunil",
-    score: 7
+    score: 20
+  }, {
+    name: "Rekha",
+    score: 16
   }]
 
   // console.log(highScore[0].score)
 
-  if (score === highScore[0].score) {
-    console.log("You've topped the score!")
+  if (score >= highScore[1].score) {
+    console.log(chalk.green("You're one of a top scorer!"))
   }else {
-    console.log("Sorry! You did'nt make it. Try Again.")
+    console.log(chalk.redBright("Sorry! You did'nt make it. Try Again."))
   }
+console.log(chalk.yellow("------------------------------------"));
+console.log("Checkout the top scorers in scoreboard here")
+
+  for (let j=0; j<highScore.length; j++){
+    console.log(chalk.bgGrey.green.bold(highScore[j].name, highScore[j].score))
+  }
+console.log(chalk.yellow("------------------------------------"));
+console.log(chalk.blue("If your score is equal or has beaten the top scorer in scoreboard, please provide me the screenshot of your score I'll update the score board, thanks."))
+console.log(chalk.yellow("------------------------------------"));
